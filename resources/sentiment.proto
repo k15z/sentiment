@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package sentiment;
+
+service Sentiment {
+  rpc Analyze (SentimentRequest) returns (SentimentReply) {}
+  rpc AnalyzeStream (stream SentimentRequest) returns (stream SentimentReply) {}
+}
+
+message SentimentRequest {
+  string text = 1;
+}
+
+message SentimentReply {
+  float positive = 1;
+  float negative = 2;
+}
